@@ -1,0 +1,760 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="SMK AL-HUDA Jati Agung - Sekolah Unggulan Membangun Generasi Berkarakter"
+    />
+    <meta
+      name="keywords"
+      content="SMK AL-HUDA, Sekolah Kejuruan, Pendidikan Berkualitas"
+    />
+    <link rel="canonical" href="https://www.smkalhuda.sch.id" />
+    <meta property="og:title" content="SMK AL-HUDA Jati Agung" />
+    <meta
+      property="og:description"
+      content="Membangun Generasi Unggul dan Berkarakter"
+    />
+    <meta property="og:image" content="/logo-alhuda.png" />
+    <meta property="og:url" content="https://www.smkalhuda.sch.id" />
+    <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
+    <title>SMK AL-HUDA Jati Agung</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Swiper JS untuk Carousel -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0066cc;
+        border-radius: 4px;
+      }
+
+      /* Dropdown Desktop */
+      .desktop-menu-item {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .desktop-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Desktop Submenu */
+      .desktop-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 50;
+      }
+
+      .desktop-menu-group:hover .desktop-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .desktop-dropdown-item {
+        position: relative;
+        padding: 10px 15px;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover {
+        background-color: #f0f0f0;
+        color: #0066cc;
+      }
+
+      .desktop-dropdown-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 15px;
+        background-color: #0066cc;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover::after {
+        width: calc(100% - 30px);
+      }
+
+      /* Dropdown untuk mobile menu */
+      .group:hover .group-hover:block {
+        display: block;
+      }
+      /* Fullscreen slider */
+      .swiper {
+        width: 100%;
+        height: 100vh;
+        max-height: 700px;
+      }
+
+      .swiper-slide {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .swiper-slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .slider-text {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        color: white;
+        z-index: 2;
+        max-width: 600px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Animasi hover */
+      .hover-lift {
+        transition: transform 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Background gradient */
+      .header-gradient {
+        background: linear-gradient(135deg, #0066cc, #00348c);
+      }
+
+      /* Responsivitas Desktop */
+      @media (max-width: 767px) {
+        .swiper {
+          height: 50vh; /* Ubah tinggi menjadi 50% dari viewport height */
+          max-height: 350px; /* Batasi maksimal tinggi */
+        }
+      }
+
+      /* Responsivitas Mobile */
+      @media (max-width: 768px) {
+        .slider-text {
+          bottom: 20px;
+          left: 20px;
+          right: 20px;
+          text-align: center;
+        }
+
+        .slider-text h2 {
+          font-size: 1.5rem;
+        }
+
+        .slider-text p {
+          font-size: 1rem;
+        }
+
+        header {
+          padding: 10px 0;
+        }
+
+        .grid-cols-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animasi underline untuk menu mobile */
+      .mobile-menu-item {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .mobile-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown animasi */
+      .dropdown-submenu {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .group:hover .dropdown-submenu {
+        max-height: 300px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans overflow-x-hidden">
+    <!-- Top Bar -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="container mx-auto flex justify-between px-4">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-phone"></i>
+          <span>(0123) 456-7890</span>
+          <i class="fas fa-envelope"></i>
+          <span>info@smkalhuda.sch.id</span>
+        </div>
+        <div class="hidden md:flex space-x-3">
+          <a
+            href="https://www.youtube.com/@smkal-hudajatiagung2925"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-youtube text-lg"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@smkalhudajatiagung"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-tiktok text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-gradient text-white py-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center space-x-4">
+          <img
+            src="/img/logo-alhuda.png"
+            alt="Logo Sekolah"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold">
+              SMK AL-HUDA Jati Agung
+            </h1>
+            <p class="text-xs md:text-sm mt-3">
+              Membangun Generasi Unggul dan Berkarakter
+            </p>
+          </div>
+        </div>
+        <nav class="hidden lg:flex space-x-6">
+          <a
+            href="/index.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Beranda</a
+          >
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Profil</a
+            >
+            <div class="desktop-dropdown">
+              <a
+                href="/src/profile_sekolah/profile.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Sejarah</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/visi_misi.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Visi & Misi</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/struktur.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Struktur Organisasi</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Akademik</a
+            >
+            <div class="desktop-dropdown">
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Kurikulum</span>
+              </a>
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Jadwal Pelajaran</span>
+              </a>
+              <a
+                href="/src/akademik/ekstrakurikuler.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Ekstrakurikuler</span>
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="/src/kontak/kontak.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Kontak</a
+          >
+        </nav>
+        <button class="lg:hidden" id="mobile-menu-toggle">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-blue-700 text-white">
+      <nav class="container mx-auto py-4 space-y-3 pl-4">
+        <a href="#" class="block mobile-menu-item">Beranda</a>
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Profil</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a
+              href="/src/profile_sekolah/profile.html"
+              class="block mobile-menu-item"
+              >Sejarah</a
+            >
+            <a
+              href="/src/profile_sekolah/visi_misi.html"
+              class="block mobile-menu-item"
+              >Visi & Misi</a
+            >
+            <a
+              href="/src/profile_sekolah/struktur.html"
+              class="block mobile-menu-item"
+              >Struktur Organisasi</a
+            >
+          </div>
+        </div>
+
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Akademik</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a href="#" class="block mobile-menu-item">Kurikulum</a>
+            <a href="#" class="block mobile-menu-item">Jadwal Pelajaran</a>
+            <a
+              href="/src/akademik/ekstrakurikuler.html"
+              class="block mobile-menu-item"
+              >Ekstrakurikuler</a
+            >
+          </div>
+        </div>
+
+        <a href="/src/kontak/kontak.html" class="block mobile-menu-item"
+          >Kontak</a
+        >
+      </nav>
+    </div>
+    <!-- Swiper Carousel -->
+    <section class="mt-13">
+      <div class="swiper mySwiper overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/img/slidder1.jpg" class="w-full h-full object-cover" />
+            <div class="slider-text">
+              <h2 class="text-3xl font-bold mb-4">
+                Selamat Datang di SMK AL-HUDA
+              </h2>
+              <p class="text-lg">Membangun Generasi Unggul dan Berkarakter</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/slidder2.jpg" class="w-full h-full object-cover" />
+            <div class="slider-text">
+              <h2 class="text-3xl font-bold mb-4">Tenaga Pendidik</h2>
+              <p class="text-lg">Mengembangkan Potensi Siswa Secara Maksimal</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/slidder1.jpg" class="w-full h-full object-cover" />
+            <div class="slider-text">
+              <h2 class="text-3xl font-bold mb-4">
+                Lingkungan Belajar Terbaik
+              </h2>
+              <p class="text-lg">Mendukung Pertumbuhan Akademik dan Karakter</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Informasi Utama -->
+    <section class="container mx-auto mt-8 px-4 grid md:grid-cols-1 gap-6">
+      <!-- Akreditasi dan Pencapaian -->
+      <section class="container mx-auto mt-2 grid md:grid-cols-1 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8 text-center">
+              <div
+                class="bg-blue-100 rounded-full w-48 h-48 mx-auto flex items-center justify-center shadow-lg"
+              >
+                <img
+                  src="/img/logo-alhuda.png"
+                  alt="Akreditasi A"
+                  class="w-32 h-32 object-contain"
+                />
+              </div>
+            </div>
+
+            <div class="md:w-2/3 text-center md:text-left">
+              <h2 class="text-2xl font-bold mb-4 text-blue-800 border-b pb-2">
+                Terakreditasi A
+              </h2>
+
+              <div class="bg-green-50 p-4 rounded-lg mb-6">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-award text-green-600 text-3xl mr-4"></i>
+                  <div>
+                    <h3 class="font-semibold text-green-800">
+                      Akreditasi Sekolah
+                    </h3>
+                    <p class="text-green-700">
+                      Peringkat A dari Badan Akreditasi Nasional
+                    </p>
+                  </div>
+                </div>
+
+                <p class="text-gray-600 text-sm">
+                  Bukti komitmen kami dalam memberikan pendidikan berkualitas
+                  tinggi dan berkelanjutan sesuai standar nasional pendidikan.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-check-circle text-blue-600 mr-2"></i>
+                    Mutu Akademik
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Kurikulum standar nasional
+                  </p>
+                </div>
+
+                <div class="bg-blue-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-users text-blue-600 mr-2"></i>
+                    Tenaga Pendidik
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    100% Berkualifikasi Sarjana
+                  </p>
+                </div>
+
+                <div class="bg-blue-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-trophy text-blue-600 mr-2"></i>
+                    Prestasi
+                  </h4>
+                  <p class="text-sm text-gray-600">Juara Berbagai Kompetisi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pendaftaran Siswa -->
+      <section class="container mx-auto mt-2 grid md:grid-cols-1 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8">
+              <img
+                src="/img/avatar-pendaftaran.png"
+                alt="Daftar Siswa"
+                class="w-full max-w-xs mx-auto"
+              />
+            </div>
+
+            <div class="md:w-2/3 text-center md:text-left">
+              <h2 class="text-xl font-bold mb-4 border-b pb-2 text-blue-800">
+                Bergabung Bersama Kami
+              </h2>
+
+              <p class="text-gray-600 mb-6">
+                Jadilah bagian dari keluarga besar SMK AL-HUDA. Kami membuka
+                kesempatan untuk siswa berbakat dan berprestasi untuk
+                mengembangkan potensi terbaiknya.
+              </p>
+
+              <div class="flex items-center bg-blue-50 p-3 rounded-lg mb-6">
+                <i class="fas fa-calendar-alt text-blue-600 mr-5 text-2xl"></i>
+                <div>
+                  <h3 class="text-blue-800">Periode Pendaftaran</h3>
+                  <p class="text-sm text-gray-600">
+                    11 Juli 2024 - 31 Januari 2025
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <a
+                  href="/src/pendaftaran/pendaftaran.html"
+                  class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 inline-block hover-lift"
+                >
+                  Daftar Sekarang
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Berita -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-4 border-b pb-2">
+          <h2 class="text-xl font-bold text-blue-800">Berita Terkini</h2>
+          <a
+            href="/src/berita/semua-berita.html"
+            class="text-blue-600 hover:text-blue-800 transition flex items-center"
+          >
+            Lihat Semua
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="space-y-4">
+          <!-- POSTINGAN BERITA-->
+          <div class="flex border-b pb-4">
+            <div class="w-1/3 mr-4">
+              <img
+                src="/img/ppdb2024.jpg"
+                alt="Penerimaan Siswa Baru 2024"
+                class="w-full h-32 object-cover rounded-lg"
+              />
+            </div>
+            <div class="w-2/3">
+              <a
+                href="#"
+                class="text-blue-700 hover:underline text-lg font-semibold block mb-2"
+              >
+                Pengumuman Penerimaan Siswa Baru 2024
+              </a>
+              <p class="text-sm text-gray-600 mb-2">
+                Pendaftaran siswa baru telah dibuka untuk tahun ajaran
+                2024/2025. Segera daftarkan putra-putri Anda!
+              </p>
+              <p class="text-sm text-gray-500">11 November 2024</p>
+            </div>
+          </div>
+
+          <div class="flex border-b pb-4">
+            <div class="w-1/3 mr-4">
+              <img
+                src="/img/mentri1.jpg"
+                alt="Kegiatan Ekstrakurikuler"
+                class="w-full h-32 object-cover rounded-lg"
+              />
+            </div>
+            <div class="w-2/3">
+              <a
+                href="#"
+                class="text-blue-700 hover:underline text-lg font-semibold block mb-2"
+              >
+                Kunjungan Kerja Menteri Perdagangan
+              </a>
+              <p class="text-sm text-gray-600 mb-2">
+                Selamat Datang di Yayasan Al-Huda, kepada Bapak Dr. (H.C)
+                Zulkifli Hasan S.E., M.M., selaku Menteri Perdagangan Atas
+                Kunjungan Kerja di Yayasan Al-Huda.
+              </p>
+              <p class="text-sm text-gray-500">11 November 2024</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-1/3 mr-4">
+              <img
+                src="/img/slidder1.jpg"
+                alt="Kunjungan Industri"
+                class="w-full h-32 object-cover rounded-lg"
+              />
+            </div>
+            <div class="w-2/3">
+              <a
+                href="#"
+                class="text-blue-700 hover:underline text-lg font-semibold block mb-2"
+              >
+                Silaturahmi Pendakwah Habib Husein Ja’far
+              </a>
+              <p class="text-sm text-gray-600 mb-2">
+                Silaturahmi Pendakwah Habib Husein Ja’far di Pondok Pesantren Al
+                huda Dan SMK Al huda Jati Agung.
+              </p>
+              <p class="text-sm text-gray-500">11 November 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-8 mt-8">
+      <div class="container mx-auto grid md:grid-cols-3 gap-6 px-4">
+        <div>
+          <h3 class="font-bold mb-4">Kontak Kami</h3>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-map-marker-alt mr-3 text-white-500"></i>
+            Jl. Pesantren Al huda Desa Jatimulyo, Kec. Jati Agung
+          </p>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-phone mr-3 text-white-500"></i>
+            (0123) 456-7890```html
+<!-- Footer -->
+<footer class="bg-blue-800 text-white py-8 mt-8">
+  <div class="container mx-auto grid md:grid-cols-3 gap-6 px-4">
+      <div>
+          <h3 class="font-bold mb-4">Kontak Kami</h3>
+          <p class="flex items-center mb-2">
+              <i class="fas fa-map-marker-alt mr-3 text-white-500"></i>
+              Jl. Pesantren Al huda Desa Jatimulyo, Kec. Jati Agung
+          </p>
+          <p class="flex items-center mb-2">
+              <i class="fas fa-phone mr-3 text-white-500"></i>
+              (0123) 456-7890
+          </p>
+          <p class="flex items-center">
+              <i class="fas fa-envelope mr-3 text-white-500"></i>
+              info@smkalhuda.sch.id
+          </p>
+      </div>
+      <div>
+          <h3 class="font-bold mb-4">Tautan Cepat</h3>
+          <ul>
+              <li><a href="#" class="hover:text-blue-200">Profil Sekolah</a></li>
+              <li><a href="#" class="hover:text-blue-200">Struktur Organisasi</a></li>
+              <li><a href="#" class="hover:text-blue-200">Galeri</a></li>
+          </ul>
+      </div>
+      <div>
+          <h3 class="font-bold mb-4">Media Sosial</h3>
+          <div class="flex space-x-4">
+              <a href="#" class="text-2xl hover:text-blue-200"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-2xl hover:text-blue-200"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-2xl hover:text-blue-200"><i class="fab fa-twitter"></i></a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+    <!-- JavaScript untuk Swiper dan Mobile Menu -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Dropdown toggle untuk mobile
+      const dropdownGroups = document.querySelectorAll(".group");
+
+      dropdownGroups.forEach((group) => {
+        const mainLink = group.querySelector("a:first-child");
+        const submenu = group.querySelector(".dropdown-submenu");
+
+        mainLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          submenu.classList.toggle("max-h-0");
+          submenu.classList.toggle("opacity-0");
+          submenu.classList.toggle("max-h-screen");
+          submenu.classList.toggle("opacity-100");
+        });
+      });
+
+      const swiper = new Swiper(".mySwiper", {
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true,
+        },
+        loop: true,
+        grabCursor: true,
+        speed: 1000,
+      });
+
+      function adjustSliderForMobile() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth < 768) {
+          swiper.params.slidesPerView = 1;
+          swiper.params.spaceBetween = 0;
+        } else {
+          swiper.params.slidesPerView = 1;
+          swiper.params.spaceBetween = 0;
+        }
+
+        swiper.update();
+      }
+
+      window.addEventListener("load", adjustSliderForMobile);
+      window.addEventListener("resize", adjustSliderForMobile);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sejarah SMK AL-HUDA Jati Agung</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Animate CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0066cc;
+        border-radius: 4px;
+      }
+
+      /* Dropdown Desktop */
+      .desktop-menu-item {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .desktop-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Desktop Submenu */
+      .desktop-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 50;
+      }
+
+      .desktop-menu-group:hover .desktop-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .desktop-dropdown-item {
+        position: relative;
+        padding: 10px 15px;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover {
+        background-color: #f0f0f0;
+        color: #0066cc;
+      }
+
+      .desktop-dropdown-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 15px;
+        background-color: #0066cc;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover::after {
+        width: calc(100% - 30px);
+      }
+
+      /* Dropdown untuk mobile menu */
+      .group:hover .group-hover:block {
+        display: block;
+      }
+
+      /* Animasi hover */
+      .hover-lift {
+        transition: transform 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Background gradient */
+      .header-gradient {
+        background: linear-gradient(135deg, #0066cc, #00348c);
+      }
+
+      /* Responsivitas Mobile */
+      @media (max-width: 768px) {
+        header {
+          padding: 10px 0;
+        }
+
+        .grid-cols-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animasi underline untuk menu mobile */
+      .mobile-menu-item {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .mobile-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown animasi */
+      .dropdown-submenu {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .group:hover .dropdown-submenu {
+        max-height: 300px;
+        opacity: 1;
+      }
+      /* Custom Gradient Background */
+      .bg-gradient-custom {
+        background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+      }
+
+      /* Timeline Advanced Styling */
+      .timeline-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: #0066cc;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+
+      .timeline-item {
+        padding: 20px 40px;
+        position: relative;
+        width: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: #0066cc;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .timeline-item:nth-child(even)::before {
+        right: -12.5px;
+      }
+
+      .timeline-item:nth-child(odd)::before {
+        left: -12.5px;
+      }
+
+      /* Card Hover Effect */
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans overflow-x-hidden">
+    <!-- Top Bar -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="container mx-auto flex justify-between px-4">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-phone"></i>
+          <span>(0123) 456-7890</span>
+          <i class="fas fa-envelope"></i>
+          <span>info@smkalhuda.sch.id</span>
+        </div>
+        <div class="hidden md:flex space-x-3">
+          <a
+            href="https://www.youtube.com/@smkal-hudajatiagung2925"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-youtube text-lg"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@smkalhudajatiagung"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-tiktok text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-gradient text-white py-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center space-x-4">
+          <img
+            src="/img/logo-alhuda.png"
+            alt="Logo Sekolah"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold">
+              SMK AL-HUDA Jati Agung
+            </h1>
+            <p class="text-xs md:text-sm mt-3">
+              Membangun Generasi Unggul dan Berkarakter
+            </p>
+          </div>
+        </div>
+        <nav class="hidden lg:flex space-x-6">
+          <a
+            href="/index.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Beranda</a
+          >
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Profil</a
+            >
+            <div class="desktop-dropdown">
+              <a
+                href="/src/profile_sekolah/profile.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Sejarah</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/visi_misi.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Visi & Misi</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/struktur.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Struktur Organisasi</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Akademik</a
+            >
+            <div class="desktop-dropdown">
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Kurikulum</span>
+              </a>
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Jadwal Pelajaran</span>
+              </a>
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Ekstrakurikuler</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+            >Kontak</a
+          >
+        </nav>
+        <button class="lg:hidden" id="mobile-menu-toggle">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-blue-700 text-white">
+      <nav class="container mx-auto py-4 space-y-3 pl-4">
+        <a href="/index.html" class="block mobile-menu-item">Beranda</a>
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Profil</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a
+              href="/src/profile_sekolah/profile.html"
+              class="block mobile-menu-item"
+              >Sejarah</a
+            >
+            <a
+              href="/src/profile_sekolah/visi_misi.html"
+              class="block mobile-menu-item"
+              >Visi & Misi</a
+            >
+            <a
+              href="/src/profile_sekolah/struktur.html"
+              class="block mobile-menu-item"
+              >Struktur Organisasi</a
+            >
+          </div>
+        </div>
+
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Akademik</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a href="#" class="block mobile-menu-item">Kurikulum</a>
+            <a href="#" class="block mobile-menu-item">Jadwal Pelajaran</a>
+            <a href="#" class="block mobile-menu-item">Ekstrakurikuler</a>
+          </div>
+        </div>
+
+        <a href="#" class="block mobile-menu-item">Kontak</a>
+      </nav>
+    </div>
+
+    <!-- Header Modern -->
+    <header class="bg-blue-900 text-white py-16 relative overflow-hidden">
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1
+            class="text-4xl md:text-5xl font-bold mb-4 animate__animated animate__fadeInUp"
+          >
+            Sejarah SMK AL-HUDA
+          </h1>
+          <p
+            class="text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            Perjalanan Transformasi Pendidikan di Jati Agung
+          </p>
+        </div>
+      </div>
+
+      <!-- Background Effect -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute w-1/2 h-1/2 bg-blue-700 rounded-full top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"
+        ></div>
+        <div
+          class="absolute w-1/3 h-1/3 bg-blue-800 rounded-full bottom-0 right-0 transform translate-x-1/2 translate-y-1/2"
+        ></div>
+      </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container mx-auto mt-12 px-4">
+      <section class="grid md:grid-cols-2 gap-8">
+        <!-- Profil Singkat -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="flex items-center mb-6">
+            <i class="fas fa-school text-4xl text-blue-600 mr-4"></i>
+            <h2 class="text-2xl font-bold text-blue-800">Profil Sekolah</h2>
+          </div>
+
+          <!-- Gambar Sekolah -->
+          <div class="mb-6 overflow-hidden rounded-lg relative h-48">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Gedung SMK AL-HUDA"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+
+          <p class="text-gray-700 mb-4">
+            SMK AL-HUDA Jati Agung berdiri dengan misi menciptakan generasi
+            unggul yang kompeten dan berkarakter.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+              <i class="fas fa-calendar-alt text-blue-600 mr-3 text-2xl"></i>
+              <div>
+                <h3 class="font-bold text-blue-800">Didirikan</h3>
+                <p class="text-gray-600">2004</p>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+              <i class="fas fa-award text-blue-600 mr-3 text-2xl"></i>
+              <div>
+                <h3 class="font-bold text-blue-800">Akreditasi</h3>
+                <p class="text-gray-600 flex items-center">
+                  A
+                  <span class="ml-2 text-green-500">
+                    <i class="fas fa-check-circle"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Galeri Sejarah -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="flex items-center mb-6">
+            <i class="fas fa-image text-4xl text-blue-600 mr-4"></i>
+            <h2 class="text-2xl font-bold text-blue-800">Galeri Sejarah</h2>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <img
+              src="/img/galery1.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+            <img
+              src="/img/galery2.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+            <img
+              src="/img/galery3.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+            <img
+              src="/img/galery1.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+            <img
+              src="/img/galery2.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+            <img
+              src="/img/galery3.jpg"
+              class="rounded-lg hover:scale-110 transition-transform"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline Sejarah -->
+      <section class="mt-8 bg-blue-50 py-16 rounded-lg">
+        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">
+          Perjalanan Sejarah
+        </h2>
+
+        <div class="timeline-container">
+          <div class="timeline-item animate__animated animate__fadeInLeft">
+            <h3 class="text-xl font-bold text-blue-700">Pendirian Awal</h3>
+            <p class="text-gray-600">
+              Yayasan Al-Huda didirikan dengan visi mulia
+            </p>
+          </div>
+
+          <div class="timeline-item animate__animated animate__fadeInRight">
+            <h3 class="text-xl font-bold text-blue-700">
+              Pengembangan Program (2010)
+            </h3>
+            <p class="text-gray-600">
+              Mulai mengembangkan program-program unggulan dan meningkatkan
+              kualitas tenaga pendidik.
+            </p>
+          </div>
+
+          <div class="timeline-item animate__animated animate__fadeInLeft">
+            <h3 class="text-xl font-bold text-blue-700">Akreditasi A (2018)</h3>
+            <p class="text-gray-600">
+              Berhasil meraih akreditasi A dan menjadi salah satu SMK terbaik di
+              wilayah tersebut.
+            </p>
+          </div>
+
+          <div class="timeline-item animate__animated animate__fadeInRight">
+            <h3 class="text-xl font-bold text-blue-700">
+              Inovasi Pendidikan (2021)
+            </h3>
+            <p class="text-gray-600">
+              Mengimplementasikan teknologi dalam pembelajaran untuk
+              meningkatkan kualitas pendidikan.
+            </p>
+          </div>
+
+          <div class="timeline-item animate__animated animate__fadeInLeft">
+            <h3 class="text-xl font-bold text-blue-700">
+              Komunitas Alumni (2023)
+            </h3>
+            <p class="text-gray-600">
+              Membangun jaringan alumni untuk mendukung siswa dan pengembangan
+              sekolah.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-8 mt-8">
+      <div class="container mx-auto grid md:grid-cols-3 gap-6 px-4">
+        <div>
+          <h3 class="font-bold mb-4">Kontak Kami</h3>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-map-marker-alt mr-3 text-white-500"></i>
+            Jl. Pesantren Al huda Desa Jatimulyo, Kec. Jati Agung
+          </p>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-phone mr-3 text-white-500"></i>
+            (0123) 456-7890
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-envelope mr-3 text-white-500"></i>
+            info@smkalhuda.sch.id
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Tautan Cepat</h3>
+          <ul>
+            <li><a href="#" class="hover:text-blue-200">Profil Sekolah</a></li>
+            <li>
+              <a href="#" class="hover:text-blue-200">Struktur Organisasi</a>
+            </li>
+            <li><a href="#" class="hover:text-blue-200">Galeri</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Media Sosial</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Dropdown toggle untuk mobile
+      const dropdownGroups = document.querySelectorAll(".group");
+
+      dropdownGroups.forEach((group) => {
+        const mainLink = group.querySelector("a:first-child");
+        const submenu = group.querySelector(".dropdown-submenu");
+
+        mainLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          submenu.classList.toggle("max-h-0");
+          submenu.classList.toggle("opacity-0");
+          submenu.classList.toggle("max-h-screen");
+          submenu.classList.toggle("opacity-100");
+        });
+      });
+
+      const swiper = new Swiper(".mySwiper", {
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true,
+        },
+        loop: true,
+        grabCursor: true,
+        speed: 1000,
+      });
+
+      function adjustSliderForMobile() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth < 768) {
+          swiper.params.slidesPerView = 1;
+          swiper.params.spaceBetween = 0;
+        } else {
+          swiper.params.slidesPerView = 1;
+          swiper.params.spaceBetween = 0;
+        }
+
+        swiper.update();
+      }
+
+      window.addEventListener("load", adjustSliderForMobile);
+      window.addEventListener("resize", adjustSliderForMobile);
+    </script>
+  </body>
+</html>

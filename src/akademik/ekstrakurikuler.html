@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ekstrakurikuler di SMK AL-HUDA Jati Agung"
+    />
+    <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
+    <title>Ekstrakurikuler - SMK AL-HUDA Jati Agung</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0066cc;
+        border-radius: 4px;
+      }
+
+      /* Dropdown Desktop */
+      .desktop-menu-item {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .desktop-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Desktop Submenu */
+      .desktop-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 50;
+      }
+
+      .desktop-menu-group:hover .desktop-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .desktop-dropdown-item {
+        position: relative;
+        padding: 10px 15px;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover {
+        background-color: #f0f0f0;
+        color: #0066cc;
+      }
+
+      .desktop-dropdown-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 15px;
+        background-color: #0066cc;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover::after {
+        width: calc(100% - 30px);
+      }
+
+      /* Dropdown untuk mobile menu */
+      .group:hover .group-hover:block {
+        display: block;
+      }
+
+      /* Animasi hover */
+      .hover-lift {
+        transition: transform 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Background gradient */
+      .header-gradient {
+        background: linear-gradient(135deg, #0066cc, #00348c);
+      }
+
+      /* Responsivitas Mobile */
+      @media (max-width: 768px) {
+        header {
+          padding: 10px 0;
+        }
+
+        .grid-cols-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animasi underline untuk menu mobile */
+      .mobile-menu-item {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .mobile-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown animasi */
+      .dropdown-submenu {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .group:hover .dropdown-submenu {
+        max-height: 300px;
+        opacity: 1;
+      }
+
+      .hover-lift {
+        transition: transform 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-10px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans overflow-x-hidden">
+    <!-- Top Bar -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="container mx-auto flex justify-between px-4">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-phone"></i>
+          <span>(0123) 456-7890</span>
+          <i class="fas fa-envelope"></i>
+          <span>info@smkalhuda.sch.id</span>
+        </div>
+        <div class="hidden md:flex space-x-3">
+          <a
+            href="https://www.youtube.com/@smkal-hudajatiagung2925"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-youtube text-lg"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@smkalhudajatiagung"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-tiktok text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-gradient text-white py-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center space-x-4">
+          <img
+            src="/img/logo-alhuda.png"
+            alt="Logo Sekolah"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold">
+              SMK AL-HUDA Jati Agung
+            </h1>
+            <p class="text-xs md:text-sm mt-3">
+              Membangun Generasi Unggul dan Berkarakter
+            </p>
+          </div>
+        </div>
+        <nav class="hidden lg:flex space-x-6">
+          <a
+            href="/index.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Beranda</a
+          >
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Profil</a
+            >
+            <div class="desktop-dropdown">
+              <a
+                href="/src/profile_sekolah/profile.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Sejarah</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/visi_misi.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Visi & Misi</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/struktur.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Struktur Organisasi</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Akademik</a
+            >
+            <div class="desktop-dropdown">
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Kurikulum</span>
+              </a>
+              <a href="#" class="desktop-dropdown-item block">
+                <span>Jadwal Pelajaran</span>
+              </a>
+              <a
+                href="/src/akademik/ekstrakurikuler.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Ekstrakurikuler</span>
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="/src/kontak/kontak.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Kontak</a
+          >
+        </nav>
+        <button class="lg:hidden" id="mobile-menu-toggle">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-blue-700 text-white">
+      <nav class="container mx-auto py-4 space-y-3 pl-4">
+        <a href="/index.html" class="block mobile-menu-item">Beranda</a>
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Profil</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a
+              href="/src/profile_sekolah/profile.html"
+              class="block mobile-menu-item"
+              >Sejarah</a
+            >
+            <a
+              href="/src/profile_sekolah/visi_misi.html"
+              class="block mobile-menu-item"
+              >Visi & Misi</a
+            >
+            <a
+              href="/src/profile_sekolah/struktur.html"
+              class="block mobile-menu-item"
+              >Struktur Organisasi</a
+            >
+          </div>
+        </div>
+
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Akademik</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a href="#" class="block mobile-menu-item">Kurikulum</a>
+            <a href="#" class="block mobile-menu-item">Jadwal Pelajaran</a>
+            <a
+              href="/src/akademik/ekstrakurikuler.html"
+              class="block mobile-menu-item"
+              >Ekstrakurikuler</a
+            >
+          </div>
+        </div>
+
+        <a href="/src/kontak/kontak.html" class="block mobile-menu-item"
+          >Kontak</a
+        >
+      </nav>
+    </div>
+
+    <!-- Konten Utama -->
+    <main class="container mx-auto mt-8 px-4">
+      <h2 class="text-3xl font-bold mb-6 text-blue-800">
+        Ekstrakurikuler Kami
+      </h2>
+      <p class="mb-8 text-gray-700 text-center">
+        Di SMK AL-HUDA, kami percaya bahwa pendidikan tidak hanya terjadi di
+        dalam kelas. Oleh karena itu, kami menyediakan berbagai kegiatan
+        ekstrakurikuler untuk mendukung pengembangan karakter dan keterampilan
+        siswa.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Ekstrakurikuler 1: Pramuka -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+          <div class="mb-4 overflow-hidden rounded-lg">
+            <img
+              src="/img/ekstrakurikuler/pramuka.jpg"
+              alt="Kegiatan Pramuka"
+              class="w-full h-56 object-cover rounded-lg transform transition duration-300 hover:scale-110"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-2">Pramuka</h3>
+          <p class="text-gray-600 mb-4">
+            Kegiatan pramuka bertujuan untuk membentuk karakter siswa melalui
+            kegiatan luar ruangan, pelatihan kepemimpinan, dan kerja sama tim.
+          </p>
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            Selengkapnya
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <!-- Ekstrakurikuler 2: Paduan Suara -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+          <div class="mb-4 overflow-hidden rounded-lg">
+            <img
+              src="/img/ekstrakurikuler/paduan-suara.jpg"
+              alt="Paduan Suara"
+              class="w-full h-56 object-cover rounded-lg transform transition duration-300 hover:scale-110"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-2">Paduan Suara</h3>
+          <p class="text-gray-600 mb-4">
+            Paduan suara kami memberikan kesempatan bagi siswa untuk
+            mengekspresikan diri melalui musik dan vokal, serta berpartisipasi
+            dalam berbagai kompetisi.
+          </p>
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            Selengkapnya
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <!-- Ekstrakurikuler 3: Olahraga -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+          <div class="mb-4 overflow-hidden rounded-lg">
+            <img
+              src="/img/ekstrakurikuler/olahraga.jpg"
+              alt="Kegiatan Olahraga"
+              class="w-full h-56 object-cover rounded-lg transform transition duration-300 hover:scale-110"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-2">Olahraga</h3>
+          <p class="text-gray-600 mb-4">
+            Kami menawarkan berbagai cabang olahraga, termasuk sepak bola,
+            basket, dan voli, untuk meningkatkan kesehatan dan kebugaran siswa.
+          </p>
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            Selengkapnya
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <!-- Ekstrakurikuler 4: Kewirausahaan -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+          <div class="mb-4 overflow-hidden rounded-lg">
+            <img
+              src="/img/ekstrakurikuler/kewirausahaan.jpg"
+              alt="Kegiatan Kewirausahaan"
+              class="w-full h-56 object-cover rounded-lg transform transition duration-300 hover:scale-110"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-2">
+            Kewirausahaan
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Program kewirausahaan kami mengajarkan siswa tentang dasar-dasar
+            bisnis dan manajemen, serta memberikan pengalaman praktis dalam
+            menjalankan usaha kecil.
+          </p>
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            Selengkapnya
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <!-- Ekstrakurikuler 5: Seni -->
+        <div class="bg-white p-6 rounded-lg shadow ```html -md hover-lift">
+          <div class="mb-4 overflow-hidden rounded-lg">
+            <img
+              src="/img/ekstrakurikuler/seni.jpg"
+              alt="Kegiatan Seni"
+              class="w-full h-56 object-cover rounded-lg transform transition duration-300 hover:scale-110"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-2">Seni</h3>
+          <p class="text-gray-600 mb-4">
+            Kegiatan seni di SMK AL-HUDA meliputi seni lukis, tari, dan teater,
+            yang bertujuan untuk mengembangkan kreativitas dan ekspresi siswa.
+          </p>
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            Selengkapnya
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-8 mt-8">
+      <div class="container mx-auto grid md:grid-cols-3 gap-6 px-4">
+        <div>
+          <h3 class="font-bold mb-4">Kontak Kami</h3>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-map-marker-alt mr-3 text-white-500"></i>
+            Jl. Pesantren Al Huda, Desa Jatimulyo, Kec. Jati Agung
+          </p>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-phone mr-3 text-white-500"></i>
+            (0123) 456-7890
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-envelope mr-3 text-white-500"></i>
+            info@smkalhuda.sch.id
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Tautan Cepat</h3>
+          <ul>
+            <li><a href="#" class="hover:text-blue-200">Profil Sekolah</a></li>
+            <li>
+              <a href="#" class="hover:text-blue-200">Struktur Organisasi</a>
+            </li>
+            <li><a href="#" class="hover:text-blue-200">Galeri</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Media Sosial</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Dropdown toggle untuk mobile
+      const dropdownGroups = document.querySelectorAll(".group");
+
+      dropdownGroups.forEach((group) => {
+        const mainLink = group.querySelector("a:first-child");
+        const submenu = group.querySelector(".dropdown-submenu");
+
+        mainLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          submenu.classList.toggle("max-h-0");
+          submenu.classList.toggle("opacity-0");
+          submenu.classList.toggle("max-h-screen");
+          submenu.classList.toggle("opacity-100");
+        });
+      });
+    </script>
+  </body>
+</html>
