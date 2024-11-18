@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
     <title>Sejarah SMK AL-HUDA Jati Agung</title>
 
     <!-- Tailwind CSS -->
@@ -31,6 +36,25 @@
       ::-webkit-scrollbar-thumb {
         background: #0066cc;
         border-radius: 4px;
+      }
+
+      body {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+
+      .container {
+        max-width: 100%;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
       }
 
       /* Dropdown Desktop */
@@ -172,66 +196,6 @@
         background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
       }
 
-      /* Timeline Advanced Styling */
-      .timeline-container {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .timeline-container::after {
-        content: "";
-        position: absolute;
-        width: 4px;
-        background-color: #0066cc;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
-      }
-
-      .timeline-item {
-        padding: 20px 40px;
-        position: relative;
-        width: 50%;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        transition: all 0.3s ease;
-      }
-
-      .timeline-item:hover {
-        transform: scale(1.05);
-        background-color: rgba(255, 255, 255, 0.2);
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 50%;
-      }
-
-      .timeline-item:nth-child(odd) {
-        left: 0;
-        text-align: right;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        background-color: #0066cc;
-        border-radius: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .timeline-item:nth-child(even)::before {
-        right: -12.5px;
-      }
-
-      .timeline-item:nth-child(odd)::before {
-        left: -12.5px;
-      }
-
       /* Card Hover Effect */
       .card-hover {
         transition: all 0.3s ease;
@@ -241,6 +205,86 @@
         transform: translateY(-10px);
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Tambahkan di dalam <style> */
+      @media (max-width: 768px) {
+        main {
+          padding: 0;
+        }
+
+        .container {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        section {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        section > div {
+          margin: 10px;
+        }
+
+        .grid-cols-3 {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+      }
+
+      /* Style untuk lightbox */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Pastikan z-index tinggi */
+        opacity: 0;
+        transition: opacity 0.3s ease; /* Tambahkan transisi */
+      }
+
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        transition: transform 0.2s ease; /* Tambahkan hover effect */
+      }
+
+      .lightbox-close:hover {
+        transform: scale(1.2);
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        animation: zoomIn 0.3s ease; /* Tambahkan animasi zoom */
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
     </style>
   </head>
@@ -416,7 +460,7 @@
     </header>
 
     <!-- Konten Utama -->
-    <main class="container mx-auto mt-12 px-4">
+    <main class="container mx-auto mt-12 px-0 sm:px-4">
       <section class="grid md:grid-cols-2 gap-8">
         <!-- Profil Singkat -->
         <div class="bg-white p-8 rounded-lg shadow-lg">
@@ -428,15 +472,27 @@
           <!-- Gambar Sekolah -->
           <div class="mb-6 overflow-hidden rounded-lg relative h-48">
             <img
-              src="/img/akreditasi.jpg"
+              src="/img/profile.jpg"
               alt="Gedung SMK AL-HUDA"
               class="absolute inset-0 w-full h-full object-cover"
             />
           </div>
 
-          <p class="text-gray-700 mb-4">
-            SMK AL-HUDA Jati Agung berdiri dengan misi menciptakan generasi
-            unggul yang kompeten dan berkarakter.
+          <p class="text-gray-700 mb-4 text-justify">
+            SMK Al Huda Jati Agung merupakan salah satu lembaga dari Yayasan Al
+            Huda Jati Agung, yang merupakan Yayasan pondok pesantren yang
+            didirikan oleh Bapak A. Habib, S.Pd.I dan Supriyanto, SH.MM. Pada
+            awal berdirinya adalah SMP Al Huda Jati Agung Lampung Selatan pada
+            tahun 1998. Kemudian didirikan SMA Al Huda Jati Agung Lampung
+            Selatan pada tahun 2000. Selanjutnya berdiri SMK (Sekolah Menengah
+            Kejuruan) berdiri pada tanggal 02 maret 2004 merupakan pecahan dari
+            SMA Al Huda Jati Agung Lampung Selatan. Awal berdiri SMK Al- Huda
+            Jati Agung baru menyediakan Jurusan Teknik Kendaraan Ringan Otomotif
+            yang siswanya satu kelas berjumlah 20 orang kemudian di tahun
+            berikutnya mencapai dua kelas. Kemudian di tahun 2006 menyediakan
+            jurusan Teknik Komputer dan Jaringan, di tahun 2014 dibuka lagi
+            jurusan Teknik dan Bisnis Sepeda Motor serta jurusan Farmasi Klinis
+            dan Komunitas.
           </p>
 
           <div class="grid grid-cols-2 gap-4">
@@ -469,88 +525,47 @@
             <i class="fas fa-image text-4xl text-blue-600 mr-4"></i>
             <h2 class="text-2xl font-bold text-blue-800">Galeri Sejarah</h2>
           </div>
-          <div class="grid grid-cols-3 gap-4">
+          <div class="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-4">
             <img
               src="/img/galery1.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
             <img
               src="/img/galery2.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
             <img
               src="/img/galery3.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
             <img
               src="/img/galery1.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
             <img
               src="/img/galery2.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
             <img
               src="/img/galery3.jpg"
-              class="rounded-lg hover:scale-110 transition-transform"
+              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
-      <!-- Timeline Sejarah -->
-      <section class="mt-8 bg-blue-50 py-16 rounded-lg">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">
-          Perjalanan Sejarah
-        </h2>
-
-        <div class="timeline-container">
-          <div class="timeline-item animate__animated animate__fadeInLeft">
-            <h3 class="text-xl font-bold text-blue-700">Pendirian Awal</h3>
-            <p class="text-gray-600">
-              Yayasan Al-Huda didirikan dengan visi mulia
-            </p>
-          </div>
-
-          <div class="timeline-item animate__animated animate__fadeInRight">
-            <h3 class="text-xl font-bold text-blue-700">
-              Pengembangan Program (2010)
-            </h3>
-            <p class="text-gray-600">
-              Mulai mengembangkan program-program unggulan dan meningkatkan
-              kualitas tenaga pendidik.
-            </p>
-          </div>
-
-          <div class="timeline-item animate__animated animate__fadeInLeft">
-            <h3 class="text-xl font-bold text-blue-700">Akreditasi A (2018)</h3>
-            <p class="text-gray-600">
-              Berhasil meraih akreditasi A dan menjadi salah satu SMK terbaik di
-              wilayah tersebut.
-            </p>
-          </div>
-
-          <div class="timeline-item animate__animated animate__fadeInRight">
-            <h3 class="text-xl font-bold text-blue-700">
-              Inovasi Pendidikan (2021)
-            </h3>
-            <p class="text-gray-600">
-              Mengimplementasikan teknologi dalam pembelajaran untuk
-              meningkatkan kualitas pendidikan.
-            </p>
-          </div>
-
-          <div class="timeline-item animate__animated animate__fadeInLeft">
-            <h3 class="text-xl font-bold text-blue-700">
-              Komunitas Alumni (2023)
-            </h3>
-            <p class="text-gray-600">
-              Membangun jaringan alumni untuk mendukung siswa dan pengembangan
-              sekolah.
-            </p>
-          </div>
+      <!-- Lightbox Container -->
+      <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+          <span id="lightbox-close" class="lightbox-close">&times;</span>
+          <img
+            id="lightbox-img"
+            class="lightbox-image"
+            src=""
+            alt="Lightbox Image"
+          />
         </div>
-      </section>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -600,6 +615,47 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Lightbox Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxClose = document.getElementById("lightbox-close");
+        const galleryImages = document.querySelectorAll(".gallery-image");
+
+        // Add click event to each gallery image
+        galleryImages.forEach((img) => {
+          img.addEventListener("click", function () {
+            lightboxImg.src = this.src;
+            lightbox.style.display = "flex";
+
+            // Tambahkan sedikit animasi
+            setTimeout(() => {
+              lightbox.style.opacity = "1";
+            }, 10);
+          });
+        });
+
+        // Close lightbox when close button is clicked
+        lightboxClose.addEventListener("click", function () {
+          closeLightbox();
+        });
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        // Fungsi untuk menutup lightbox dengan animasi
+        function closeLightbox() {
+          lightbox.style.opacity = "0";
+          setTimeout(() => {
+            lightbox.style.display = "none";
+          }, 300);
+        }
+      });
+
       const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
 
@@ -622,42 +678,6 @@
           submenu.classList.toggle("opacity-100");
         });
       });
-
-      const swiper = new Swiper(".mySwiper", {
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        effect: "fade",
-        fadeEffect: {
-          crossFade: true,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          dynamicBullets: true,
-        },
-        loop: true,
-        grabCursor: true,
-        speed: 1000,
-      });
-
-      function adjustSliderForMobile() {
-        const screenWidth = window.innerWidth;
-
-        if (screenWidth < 768) {
-          swiper.params.slidesPerView = 1;
-          swiper.params.spaceBetween = 0;
-        } else {
-          swiper.params.slidesPerView = 1;
-          swiper.params.spaceBetween = 0;
-        }
-
-        swiper.update();
-      }
-
-      window.addEventListener("load", adjustSliderForMobile);
-      window.addEventListener("resize", adjustSliderForMobile);
     </script>
   </body>
 </html>

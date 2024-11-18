@@ -187,6 +187,20 @@
         max-height: 300px;
         overflow-y: auto;
       }
+
+      /* Kustom SweetAlert */
+      .custom-swal-popup {
+        font-family: "Arial", sans-serif;
+      }
+
+      .custom-swal-title {
+        color: #0066cc !important;
+        font-weight: bold;
+      }
+
+      .custom-swal-content {
+        text-align: left;
+      }
     </style>
   </head>
   <body class="bg-gray-100 font-sans overflow-x-hidden">
@@ -194,8 +208,9 @@
     <div class="bg-blue-900 text-white py-2">
       <div class="container mx-auto flex justify-between px-4">
         <div class="flex items-center space-x-4">
-          <i class="fas fa-phone"></i> <span>(0123) 456-7890</span>
-          <i class="fas fa-envelope"></i> <span>info@smkalhuda.sch.id</span>
+          <i class="fas fa-phone"></i> <span>(0721) 5610100</span>
+          <i class="fas fa-envelope"></i>
+          <span>smkalhudajatiagung@gmail.com</span>
         </div>
         <div class="hidden md:flex space-x-3">
           <a href="#" class="hover:text-blue-300">
@@ -581,11 +596,11 @@
           </p>
           <p class="flex items-center mb-2">
             <i class="fas fa-phone mr-3 text-white-500"></i>
-            (0123) 456-7890
+            (0721) 5610100
           </p>
           <p class="flex items-center">
             <i class="fas fa-envelope mr-3 text-white-500"></i>
-            info@smkalhuda.sch.id
+            smkalhudajatiagung@gmail.com
           </p>
         </div>
         <div>
@@ -616,6 +631,14 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <!-- SheetJS untuk Export Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       function validateForm() {
@@ -654,6 +677,243 @@
 
         return true;
       }
+
+      // Tambahkan library SheetJS
+      document.write(
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"><\/script>'
+      );
+
+      function exportToExcel() {
+        // Ambil semua data dari form dengan label yang lebih jelas
+        const formData = [
+          { Kategori: "Informasi Pribadi", Keterangan: "" },
+          {
+            Kategori: "Nama Lengkap",
+            Keterangan: document.querySelector('input[name="namaLengkap"]')
+              .value,
+          },
+          {
+            Kategori: "Jenis Kelamin",
+            Keterangan:
+              document.querySelector('input[name="jenisKelamin"]:checked')
+                .value === "L"
+                ? "Laki-laki"
+                : "Perempuan",
+          },
+          {
+            Kategori: "Tempat Lahir",
+            Keterangan: document.querySelector('input[name="tempatLahir"]')
+              .value,
+          },
+          {
+            Kategori: "Tanggal Lahir",
+            Keterangan: document.querySelector('input[name="tanggalLahir"]')
+              .value,
+          },
+          {
+            Kategori: "Agama",
+            Keterangan: document.querySelector('select[name="agama"]').value,
+          },
+          {
+            Kategori: "Nomor Telepon",
+            Keterangan: document.querySelector('input[name="nomorTelepon"]')
+              .value,
+          },
+
+          { Kategori: "Informasi Alamat", Keterangan: "" },
+          {
+            Kategori: "Alamat Lengkap",
+            Keterangan: document.querySelector('textarea[name="alamatLengkap"]')
+              .value,
+          },
+          {
+            Kategori: "Provinsi",
+            Keterangan: document.querySelector('input[name="provinsi"]').value,
+          },
+          {
+            Kategori: "Kabupaten/Kota",
+            Keterangan: document.querySelector('input[name="kabupatenKota"]')
+              .value,
+          },
+
+          { Kategori: "Informasi Sekolah Asal", Keterangan: "" },
+          {
+            Kategori: "Nama Sekolah",
+            Keterangan: document.querySelector('input[name="namaSekolahAsal"]')
+              .value,
+          },
+          {
+            Kategori: "Tahun Lulus",
+            Keterangan: document.querySelector('select[name="tahunLulus"]')
+              .value,
+          },
+
+          { Kategori: "Pilihan Jurusan", Keterangan: "" },
+          {
+            Kategori: "Jurusan",
+            Keterangan: document.querySelector('select[name="jurusanPertama"]')
+              .value,
+          },
+
+          {
+            Kategori: "Waktu Pendaftaran",
+            Keterangan: new Date().toLocaleString(),
+          },
+        ];
+
+        // Buat worksheet
+        const worksheet = XLSX.utils.json_to_sheet(formData);
+
+        // Atur lebar kolom
+        worksheet["!cols"] = [
+          { wch: 25 }, // Kategori
+          { wch: 50 }, // Keterangan
+        ];
+
+        // Buat workbook
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Pendaftaran Siswa");
+
+        // Style untuk header dan data penting
+        const borderStyle = {
+          top: { style: "thin" },
+          bottom: { style: "thin" },
+          left: { style: "thin" },
+          right: { style: "thin" },
+        };
+
+        // Tambahkan border dan warna untuk baris kategori
+        const kategoriBaris = [0, 7, 12, 15, 16];
+        kategoriBaris.forEach((index) => {
+          const cellRef = XLSX.utils.encode_cell({ c: 0, r: index });
+          const cellRef2 = XLSX.utils.encode_cell({ c: 1, r: index });
+
+          if (!worksheet[cellRef].s) worksheet[cellRef].s = {};
+          if (!worksheet[cellRef2].s) worksheet[cellRef2].s = {};
+
+          worksheet[cellRef].s = {
+            fill: { fgColor: { rgb: "D3D3D3" } },
+            font: { bold: true },
+            border: borderStyle,
+          };
+          worksheet[cellRef2].s = {
+            fill: { fgColor: { rgb: "D3D3D3" } },
+            font: { bold: true },
+            border: borderStyle,
+          };
+        });
+
+        // Generate nama file
+        const namaLengkap = document.querySelector(
+          'input[name="namaLengkap"]'
+        ).value;
+        const fileName = `Pendaftaran_${namaLengkap.replace(/\s+/g, "_")}_${
+          new Date().toISOString().split("T")[0]
+        }.xlsx`;
+
+        // Export file
+        XLSX.writeFile(workbook, fileName);
+      }
+
+      // Modifikasi event listener submit form
+      document
+        .getElementById("pendaftaranForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          if (validateForm()) {
+            const konfirmasi = confirm(
+              "Apakah Anda yakin data yang diisikan sudah benar?"
+            );
+
+            if (konfirmasi) {
+              // Ambil semua data dari form
+              const formData = new FormData(this);
+
+              // Tambahkan data tambahan untuk struktur yang lebih baik
+              const formDataObject = {
+                "Informasi Pribadi": {
+                  "Nama Lengkap": formData.get("namaLengkap"),
+                  "Jenis Kelamin":
+                    formData.get("jenisKelamin") === "L"
+                      ? "Laki-laki"
+                      : "Perempuan",
+                  "Tempat Lahir": formData.get("tempatLahir"),
+                  "Tanggal Lahir": formData.get("tanggalLahir"),
+                  Agama: formData.get("agama"),
+                  "Nomor Telepon": formData.get("nomorTelepon"),
+                },
+                "Informasi Alamat": {
+                  "Alamat Lengkap": formData.get("alamatLengkap"),
+                  Provinsi: formData.get("provinsi"),
+                  "Kabupaten/Kota": formData.get("kabupatenKota"),
+                },
+                "Informasi Sekolah Asal": {
+                  "Nama Sekolah": formData.get("namaSekolahAsal"),
+                  "Tahun Lulus": formData.get("tahunLulus"),
+                },
+                "Pilihan Jurusan": {
+                  Jurusan: formData.get("jurusanPertama"),
+                },
+                Metadata: {
+                  "Waktu Pendaftaran": new Date().toLocaleString(),
+                  "User Agent": navigator.userAgent,
+                },
+              };
+
+              // Konversi objek ke format yang lebih mudah dibaca
+              const formattedMessage = Object.entries(formDataObject)
+                .map(
+                  ([section, data]) =>
+                    `--- ${section} ---\n` +
+                    Object.entries(data)
+                      .map(([key, value]) => `${key}: ${value}`)
+                      .join("\n")
+                )
+                .join("\n\n");
+
+              // Kirim data ke Formspree
+              fetch("https://formspree.io/f/xrbglbkd", {
+                method: "POST",
+                body: JSON.stringify({
+                  message: formattedMessage,
+                  ...Object.fromEntries(formData),
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Pendaftaran Berhasil!",
+                      text: "Terima kasih telah mendaftar di SMK AL-HUDA",
+                      confirmButtonText: "Oke",
+                    });
+                    this.reset(); // Reset form
+                  } else {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Pendaftaran Gagal",
+                      text: "Silakan coba lagi atau hubungi panitia",
+                      confirmButtonText: "Tutup",
+                    });
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  Swal.fire({
+                    icon: "error",
+                    title: "Terjadi Kesalahan",
+                    text: "Mohon periksa koneksi internet Anda",
+                    confirmButtonText: "Tutup",
+                  });
+                });
+            }
+          }
+        });
 
       // Tambahkan event listener untuk form
       document

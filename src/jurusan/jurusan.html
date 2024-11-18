@@ -2,17 +2,22 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Semua Berita SMK AL-HUDA Jati Agung" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
-    <title>Semua Berita - SMK AL-HUDA Jati Agung</title>
+    <title>Jurusan - SMK AL-HUDA Jati Agung</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
     <style>
       /* Custom scrollbar */
       ::-webkit-scrollbar {
@@ -99,14 +104,6 @@
       /* Dropdown untuk mobile menu */
       .group:hover .group-hover:block {
         display: block;
-      }
-
-      /* Animasi hover */
-      .hover-lift {
-        transition: transform 0.3s ease;
-      }
-      .hover-lift:hover {
-        transform: translateY(-10px);
       }
 
       /* Background gradient */
@@ -251,7 +248,10 @@
               <a href="#" class="desktop-dropdown-item block">
                 <span>Jadwal Pelajaran</span>
               </a>
-              <a href="#" class="desktop-dropdown-item block">
+              <a
+                href="/src/akademik/ekstrakurikuler.html"
+                class="desktop-dropdown-item block"
+              >
                 <span>Ekstrakurikuler</span>
               </a>
             </div>
@@ -272,7 +272,7 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden bg-blue-700 text-white">
       <nav class="container mx-auto py-4 space-y-3 pl-4">
-        <a href="/index.html" class="block mobile-menu-item">Beranda</a>
+        <a href="#" class="block mobile-menu-item">Beranda</a>
         <div class="group">
           <a href="#" class="block mobile-menu-item">Profil</a>
           <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
@@ -299,7 +299,11 @@
           <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
             <a href="#" class="block mobile-menu-item">Kurikulum</a>
             <a href="#" class="block mobile-menu-item">Jadwal Pelajaran</a>
-            <a href="#" class="block mobile-menu-item">Ekstrakurikuler</a>
+            <a
+              href="/src/akademik/ekstrakurikuler.html"
+              class="block mobile-menu-item"
+              >Ekstrakurikuler</a
+            >
           </div>
         </div>
 
@@ -308,89 +312,233 @@
         >
       </nav>
     </div>
-    <!-- Header -->
-    <header class="bg-blue-900 text-white py-4">
-      <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-bold">Semua Berita</h1>
+
+    <!-- Konten Jurusan -->
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-blue-800 mb-6 text-center">
+        Program Keahlian SMK AL-HUDA
+      </h1>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <!-- Jurusan 1: Teknik Kendaraan Ringan (TKR) -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Teknik Kendaraan Ringan"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+            >
+              <h2 class="text-xl font-bold">Teknik Kendaraan Ringan</h2>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <p class="text-gray-600 mb-4 flex-grow">
+              Jurusan yang fokus pada teknologi pemeliharaan dan perbaikan
+              kendaraan ringan.
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Mekanik Otomotif
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Diagnosis Kendaraan
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Modifikasi Kendaraan
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="block text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
+            >
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+
+        <!-- Jurusan 2: Teknik Sepeda Motor (TSM) -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Teknik Sepeda Motor"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+            >
+              <h2 class="text-xl font-bold">Teknik Sepeda Motor</h2>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <p class="text-gray-600 mb-4 flex-grow">
+              Jurusan spesialis dalam perawatan dan perbaikan sepeda motor.
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Servis Motor
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Diagnosis Kerusakan
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Modifikasi Motor
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="block text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
+            >
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+
+        <!-- Jurusan 3: Teknik Komputer dan Jaringan (TKJ) -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Teknik Komputer dan Jaringan"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+            >
+              <h2 class="text-xl font-bold">Teknik Komputer Jaringan</h2>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <p class="text-gray-600 mb-4 flex-grow">
+              Jurusan yang fokus pada teknologi informasi dan jaringan komputer.
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Instalasi Jaringan
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Pemrograman
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Keamanan Sistem
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="block text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
+            >
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+
+        <!-- Jurusan 4: Farmasi -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Farmasi"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+            >
+              <h2 class="text-xl font-bold">Farmasi</h2>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <p class="text-gray-600 mb-4 flex-grow">
+              Jurusan yang mempersiapkan tenaga profesional di bidang farmasi
+              dan pelayanan kesehatan.
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Pengelolaan Obat
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i> Pelayanan
+                Farmasi
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i> Manajemen
+                Apotek
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="block text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
+            >
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+
+        <!-- Jurusan 5: Asisten Keperawatan -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative">
+            <img
+              src="/img/akreditasi.jpg"
+              alt="Asisten Keperawatan"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+            >
+              <h2 class="text-xl font-bold">Asisten Keperawatan</h2>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <p class="text-gray-600 mb-4 flex-grow">
+              Jurusan yang mempersiapkan tenaga ahli dalam bidang keperawatan
+              dan kesehatan.
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Perawatan Pasien
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                Kesehatan Masyarakat
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-blue-500 mr-2"></i> Manajemen
+                Kesehatan
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="block text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
+            >
+              Selengkapnya
+            </a>
+          </div>
+        </div>
       </div>
-    </header>
-
-    <!-- Berita List -->
-    <section class="container mx-auto mt-8 px-4">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Contoh Berita 1 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img
-            src="/img/ppdb2024.jpg"
-            alt="Penerimaan Siswa Baru 2024"
-            class="w-full h-32 object-cover rounded-lg mb-4"
-          />
-          <h2 class="text-lg font-bold text-blue-800 mb-2">
-            Pengumuman Penerimaan Siswa Baru 2024
-          </h2>
-          <p class="text-gray-600 mb-2">
-            Pendaftaran siswa baru telah dibuka untuk tahun ajaran 2024/2025.
-            Segera daftarkan putra-putri Anda!
-          </p>
-          <p class="text-sm text-gray-500">11 November 2024</p>
-          <a
-            href="#"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-2 inline-block shadow-md hover:shadow-lg"
-          >
-            Baca Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-
-        <!-- Contoh Berita 2 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img
-            src="/img/mentri1.jpg"
-            alt="Kegiatan Ekstrakurikuler"
-            class="w-full h-32 object-cover rounded-lg mb-4"
-          />
-          <h2 class="text-lg font-bold text-blue-800 mb-2">
-            Kunjungan Kerja Menteri Perdagangan
-          </h2>
-          <p class="text-gray-600 mb-2">
-            Selamat Datang di Yayasan Al-Huda, kepada Bapak Dr. (H.C) Zulkifli
-            Hasan S.E., M.M., selaku Menteri Perdagangan Atas Kunjungan Kerja di
-            Yayasan Al-Huda.
-          </p>
-          <p class="text-sm text-gray-500">11 November 2024</p>
-          <a
-            href="#"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-2 inline-block shadow-md hover:shadow-lg"
-          >
-            Baca Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-
-        <!-- Contoh Berita 3 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img
-            src="/img/slidder1.jpg"
-            alt="Kunjungan Industri"
-            class="w-full h-32 object-cover rounded-lg mb-4"
-          />
-          <h2 class="text-lg font-bold text-blue-800 mb-2">
-            Silaturahmi Pendakwah Habib Husein Ja’far
-          </h2>
-          <p class="text-gray-600 mb-2">
-            Silaturahmi Pendakwah Habib Husein Ja’far di Pondok Pesantren Al
-            Huda Dan SMK Al Huda Jati Agung.
-          </p>
-          <p class="text-sm text-gray-500">11 November 2024</p>
-          <a
-            href="#"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-2 inline-block shadow-md hover:shadow-lg"
-          >
-            Baca Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-
-        <!-- Tambahkan lebih banyak berita sesuai kebutuhan -->
-      </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-blue-800 text-white py-8 mt-8">
@@ -403,11 +551,11 @@
           </p>
           <p class="flex items-center mb-2">
             <i class="fas fa-phone mr-3 text-white-500"></i>
-            (0123) 456-7890
+            (0721) 5610100
           </p>
           <p class="flex items-center">
             <i class="fas fa-envelope mr-3 text-white-500"></i>
-            info@smkalhuda.sch.id
+            smkalhudajatiagung@gmail.com
           </p>
         </div>
         <div>
@@ -436,6 +584,11 @@
         </div>
       </div>
     </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- JavaScript untuk Swiper dan Mobile Menu -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
