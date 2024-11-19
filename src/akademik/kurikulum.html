@@ -2,13 +2,12 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
-    <title>Sejarah SMK AL-HUDA Jati Agung</title>
+    <title>Kurikulum - SMK AL-HUDA Jati Agung</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,12 +16,6 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-
-    <!-- Animate CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
     <style>
@@ -36,25 +29,6 @@
       ::-webkit-scrollbar-thumb {
         background: #0066cc;
         border-radius: 4px;
-      }
-
-      body {
-        overflow-x: hidden;
-        max-width: 100%;
-      }
-
-      .container {
-        max-width: 100%;
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      @media (min-width: 640px) {
-        .container {
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
       }
 
       /* Dropdown Desktop */
@@ -191,101 +165,6 @@
         max-height: 300px;
         opacity: 1;
       }
-      /* Custom Gradient Background */
-      .bg-gradient-custom {
-        background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
-      }
-
-      /* Card Hover Effect */
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-
-      .card-hover:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
-
-      /* Tambahkan di dalam <style> */
-      @media (max-width: 768px) {
-        main {
-          padding: 0;
-        }
-
-        .container {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        section {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
-
-        section > div {
-          margin: 10px;
-        }
-
-        .grid-cols-3 {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 8px;
-        }
-      }
-
-      /* Style untuk lightbox */
-      .lightbox {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999; /* Pastikan z-index tinggi */
-        opacity: 0;
-        transition: opacity 0.3s ease; /* Tambahkan transisi */
-      }
-
-      .lightbox-content {
-        max-width: 90%;
-        max-height: 90%;
-        position: relative;
-      }
-
-      .lightbox-close {
-        position: absolute;
-        top: -40px;
-        right: 0;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
-        transition: transform 0.2s ease; /* Tambahkan hover effect */
-      }
-
-      .lightbox-close:hover {
-        transform: scale(1.2);
-      }
-
-      .lightbox-image {
-        max-width: 100%;
-        max-height: 90vh;
-        object-fit: contain;
-        animation: zoomIn 0.3s ease; /* Tambahkan animasi zoom */
-      }
-
-      @keyframes zoomIn {
-        from {
-          transform: scale(0.7);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
     </style>
   </head>
   <body class="bg-gray-100 font-sans overflow-x-hidden">
@@ -294,9 +173,9 @@
       <div class="container mx-auto flex justify-between px-4">
         <div class="flex items-center space-x-4">
           <i class="fas fa-phone"></i>
-          <span>(0123) 456-7890</span>
+          <span>(0721) 5610100</span>
           <i class="fas fa-envelope"></i>
-          <span>info@smkalhuda.sch.id</span>
+          <span>smkalhudajatiagung@gmail.com</span>
         </div>
         <div class="hidden md:flex space-x-3">
           <a
@@ -371,17 +250,25 @@
               >Akademik</a
             >
             <div class="desktop-dropdown">
-              <a href="#" class="desktop-dropdown-item block">
+              <a
+                href="/src/akademik/kurikulum.html"
+                class="desktop-dropdown-item block"
+              >
                 <span>Kurikulum</span>
               </a>
               </a>
-              <a href="#" class="desktop-dropdown-item block">
+              <a
+                href="/src/akademik/ekstrakurikuler.html"
+                class="desktop-dropdown-item block"
+              >
                 <span>Ekstrakurikuler</span>
               </a>
             </div>
           </div>
 
-          <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+          <a
+            href="/src/kontak/kontak.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
             >Kontak</a
           >
         </nav>
@@ -419,151 +306,131 @@
         <div class="group">
           <a href="#" class="block mobile-menu-item">Akademik</a>
           <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
-            <a href="#" class="block mobile-menu-item">Kurikulum</a>
-            <a href="#" class="block mobile-menu-item">Ekstrakurikuler</a>
+            <a
+              href="/src/akademik/kurikulum.html"
+              class="block mobile-menu-item"
+              >Kurikulum</a
+            >
+            <a
+              href="/src/akademik/ekstrakurikuler.html"
+              class="block mobile-menu-item"
+              >Ekstrakurikuler</a
+            >
           </div>
         </div>
 
-        <a href="#" class="block mobile-menu-item">Kontak</a>
+        <a href="/src/kontak/kontak.html" class="block mobile-menu-item"
+          >Kontak</a
+        >
       </nav>
     </div>
 
-    <!-- Header Modern -->
-    <header class="bg-blue-900 text-white py-16 relative overflow-hidden">
-      <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-3xl mx-auto text-center">
-          <h1
-            class="text-4xl md:text-5xl font-bold mb-4 animate__animated animate__fadeInUp"
-          >
-            Sejarah SMK AL-HUDA
-          </h1>
-          <p
-            class="text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s"
-          >
-            Perjalanan Transformasi Pendidikan di Jati Agung
+    <!-- Konten Kurikulum -->
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-blue-800 mb-6 text-center">
+        Kurikulum SMK AL-HUDA
+      </h1>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Deskripsi Kurikulum -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold text-blue-700 mb-4">
+            Konsep Kurikulum
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Kurikulum SMK AL-HUDA dirancang untuk menghasilkan lulusan yang
+            kompeten, berkarakter, dan siap menghadapi tantangan dunia kerja.
+            Kami menerapkan Kurikulum Merdeka Belajar dengan pendekatan praktis
+            dan kontekstual.
           </p>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+              Berbasis Kompetensi Keahlian
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+              Pengembangan Soft Skills
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+              Link and Match dengan Industri
+            </li>
+          </ul>
         </div>
-      </div>
 
-      <!-- Background Effect -->
-      <div class="absolute inset-0 opacity-20">
-        <div
-          class="absolute w-1/2 h-1/2 bg-blue-700 rounded-full top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"
-        ></div>
-        <div
-          class="absolute w-1/3 h-1/3 bg-blue-800 rounded-full bottom-0 right-0 transform translate-x-1/2 translate-y-1/2"
-        ></div>
-      </div>
-    </header>
-
-    <!-- Konten Utama -->
-    <main class="container mx-auto mt-12 px-0 sm:px-4">
-      <section class="grid md:grid-cols-2 gap-8">
-        <!-- Profil Singkat -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="flex items-center mb-6">
-            <i class="fas fa-school text-4xl text-blue-600 mr-4"></i>
-            <h2 class="text-2xl font-bold text-blue-800">Profil Sekolah</h2>
-          </div>
-
-          <!-- Gambar Sekolah -->
-          <div class="mb-6 overflow-hidden rounded-lg relative h-48">
-            <img
-              src="/img/profile.jpg"
-              alt="Gedung SMK AL-HUDA"
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-
-          <p class="text-gray-700 mb-4 text-justify">
-            SMK Al Huda Jati Agung merupakan salah satu lembaga dari Yayasan Al
-            Huda Jati Agung, yang merupakan Yayasan pondok pesantren yang
-            didirikan oleh Bapak A. Habib, S.Pd.I dan Supriyanto, SH.MM. Pada
-            awal berdirinya adalah SMP Al Huda Jati Agung Lampung Selatan pada
-            tahun 1998. Kemudian didirikan SMA Al Huda Jati Agung Lampung
-            Selatan pada tahun 2000. Selanjutnya berdiri SMK (Sekolah Menengah
-            Kejuruan) berdiri pada tanggal 02 maret 2004 merupakan pecahan dari
-            SMA Al Huda Jati Agung Lampung Selatan. Awal berdiri SMK Al- Huda
-            Jati Agung baru menyediakan Jurusan Teknik Kendaraan Ringan Otomotif
-            yang siswanya satu kelas berjumlah 20 orang kemudian di tahun
-            berikutnya mencapai dua kelas. Kemudian di tahun 2006 menyediakan
-            jurusan Teknik Komputer dan Jaringan, di tahun 2014 dibuka lagi
-            jurusan Teknik dan Bisnis Sepeda Motor serta jurusan Farmasi Klinis
-            dan Komunitas.
-          </p>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-blue-50 p-4 rounded-lg flex items-center">
-              <i class="fas fa-calendar-alt text-blue-600 mr-3 text-2xl"></i>
-              <div>
-                <h3 class="font-bold text-blue-800">Didirikan</h3>
-                <p class="text-gray-600">2004</p>
-              </div>
+        <!-- Struktur Kurikulum -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold text-blue-700 mb-4">
+            Struktur Kurikulum
+          </h2>
+          <div class="space-y-4">
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h3 class="font-semibold text-blue-800 mb-2">
+                Kelompok Mata Pelajaran
+              </h3>
+              <ul class="list-disc list-inside text-gray-700">
+                <li>Muatan Nasional</li>
+                <li>Muatan Kewilayahan</li>
+                <li>Muatan Produktif</li>
+                <li>Muatan Kejuruan</li>
+              </ul>
             </div>
-
-            <div class="bg-blue-50 p-4 rounded-lg flex items-center">
-              <i class="fas fa-award text-blue-600 mr-3 text-2xl"></i>
-              <div>
-                <h3 class="font-bold text-blue-800">Akreditasi</h3>
-                <p class="text-gray-600 flex items-center">
-                  A
-                  <span class="ml-2 text-green-500">
-                    <i class="fas fa-check-circle"></i>
-                  </span>
-                </p>
-              </div>
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h3 class="font-semibold text-blue-800 mb-2">Beban Belajar</h3>
+              <p class="text-gray-700">
+                48 jam pelajaran per minggu, dengan pembagian:
+                <br />
+                - Teori: 30%
+                <br />
+                - Praktik: 70%
+              </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Galeri Sejarah -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="flex items-center mb-6">
-            <i class="fas fa-image text-4xl text-blue-600 mr-4"></i>
-            <h2 class="text-2xl font-bold text-blue-800">Galeri Sejarah</h2>
+      <!-- Komponen Kurikulum -->
+      <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-blue-700 mb-6 text-center">
+          Komponen Kurikulum
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Komponen 1 -->
+          <div class="bg-blue-50 p-4 rounded-lg text-center">
+            <i class="fas fa-book-open text-blue-600 text-4xl mb-4"></i>
+            <h3 class="font-semibold text-blue-800 mb-2">
+              Mata Pelajaran Umum
+            </h3>
+            <p class="text-gray-700">
+              Pendidikan Agama, Kewarganegaraan, Bahasa Indonesia, dll.
+            </p>
           </div>
-          <div class="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-4">
-            <img
-              src="/img/galery1.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-            <img
-              src="/img/galery2.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-            <img
-              src="/img/galery3.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-            <img
-              src="/img/galery1.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-            <img
-              src="/img/galery2.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-            <img
-              src="/img/galery3.jpg"
-              class="rounded-lg hover:scale-110 transition-transform gallery-image cursor-pointer w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
 
-      <!-- Lightbox Container -->
-      <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-          <span id="lightbox-close" class="lightbox-close">&times;</span>
-          <img
-            id="lightbox-img"
-            class="lightbox-image"
-            src=""
-            alt="Lightbox Image"
-          />
+          <!-- Komponen 2 -->
+          <div class="bg-blue-50 p-4 rounded-lg text-center">
+            <i class="fas fa-laptop-code text-blue-600 text-4xl mb-4"></i>
+            <h3 class="font-semibold text-blue-800 mb-2">
+              Mata Pelajaran Produktif
+            </h3>
+            <p class="text-gray-700">
+              Sesuai kompetensi keahlian masing-masing jurusan.
+            </p>
+          </div>
+
+          <!-- Komponen 3 -->
+          <div class="bg-blue-50 p-4 rounded-lg text-center">
+            <i class="fas fa-tools text-blue-600 text-4xl mb-4"></i>
+            <h3 class="font-semibold text-blue-800 mb-2">
+              Praktik Kerja Lapangan
+            </h3>
+            <p class="text-gray-700">
+              Magang di industri untuk pengalaman nyata.
+            </p>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-blue-800 text-white py-8 mt-8">
@@ -576,11 +443,11 @@
           </p>
           <p class="flex items-center mb-2">
             <i class="fas fa-phone mr-3 text-white-500"></i>
-            (0123) 456-7890
+            (0721) 5610100
           </p>
           <p class="flex items-center">
             <i class="fas fa-envelope mr-3 text-white-500"></i>
-            info@smkalhuda.sch.id
+            smkalhudajatiagung@gmail.com
           </p>
         </div>
         <div>
@@ -610,49 +477,9 @@
       </div>
     </footer>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Script Mobile Menu (sama seperti di index.html) -->
     <script>
-      // Lightbox Functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const lightboxClose = document.getElementById("lightbox-close");
-        const galleryImages = document.querySelectorAll(".gallery-image");
-
-        // Add click event to each gallery image
-        galleryImages.forEach((img) => {
-          img.addEventListener("click", function () {
-            lightboxImg.src = this.src;
-            lightbox.style.display = "flex";
-
-            // Tambahkan sedikit animasi
-            setTimeout(() => {
-              lightbox.style.opacity = "1";
-            }, 10);
-          });
-        });
-
-        // Close lightbox when close button is clicked
-        lightboxClose.addEventListener("click", function () {
-          closeLightbox();
-        });
-
-        // Close lightbox when clicking outside the image
-        lightbox.addEventListener("click", function (e) {
-          if (e.target === lightbox) {
-            closeLightbox();
-          }
-        });
-
-        // Fungsi untuk menutup lightbox dengan animasi
-        function closeLightbox() {
-          lightbox.style.opacity = "0";
-          setTimeout(() => {
-            lightbox.style.display = "none";
-          }, 300);
-        }
-      });
-
+      // Salin script mobile menu dari index.html
       const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
 
@@ -664,7 +491,7 @@
       const dropdownGroups = document.querySelectorAll(".group");
 
       dropdownGroups.forEach((group) => {
-        const mainLink = group.querySelector("a:first-child");
+        const mainLink = group.querySelector("a:first- child");
         const submenu = group.querySelector(".dropdown-submenu");
 
         mainLink.addEventListener("click", (e) => {

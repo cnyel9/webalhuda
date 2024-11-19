@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="icon" href="/img/logo-alhuda.png" type="image/x-icon" />
+    <title>Galeri - SMK AL-HUDA Jati Agung</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      /* Perbaikan Responsivitas Mobile */
+      @media (max-width: 768px) {
+        /* Judul Galeri */
+        .container h1 {
+          font-size: 2rem;
+        }
+
+        /* Kategori Button */
+        .category-btn {
+          margin: 5px;
+          padding: 8px 15px;
+          font-size: 0.8rem;
+        }
+
+        /* Galeri Container */
+        .gallery-container {
+          padding: 20px 0;
+        }
+
+        .grid-cols-1,
+        .grid-cols-2,
+        .grid-cols-3,
+        .grid-cols-4 {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 10px !important;
+        }
+
+        /* Galeri Item */
+        .gallery-item {
+          height: 250px;
+        }
+
+        .gallery-image {
+          height: 100% !important;
+        }
+
+        /* Lightbox */
+        .lightbox-controls {
+          top: -30px;
+          right: 10px;
+        }
+
+        .lightbox-info {
+          font-size: 14px;
+        }
+
+        .lightbox-close,
+        .lightbox-download {
+          font-size: 20px;
+        }
+      }
+
+      /* Tambahan untuk fleksibilitas */
+      @media (max-width: 480px) {
+        .grid-cols-1,
+        .grid-cols-2,
+        .grid-cols-3,
+        .grid-cols-4 {
+          grid-template-columns: 1fr !important;
+          gap: 15px !important;
+        }
+
+        .category-btn {
+          margin: 3px;
+          padding: 6px 12px;
+          font-size: 0.7rem;
+        }
+      }
+
+      /* Galeri Spesifik */
+      .gallery-image {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .gallery-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .lightbox-content {
+          max-width: 95%;
+          max-height: 80%;
+        }
+
+        .lightbox-controls {
+          position: absolute;
+          top: -40px;
+          right: 0;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 16px;
+        animation: fadeIn 0.3s ease;
+        position: relative;
+      }
+
+      .lightbox-controls {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .lightbox-info {
+        color: white;
+        margin-right: 20px;
+        font-size: 16px;
+      }
+
+      .lightbox-close,
+      .lightbox-download {
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .lightbox-close:hover,
+      .lightbox-download:hover {
+        transform: scale(1.2);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Category Buttons */
+      .category-btn {
+        position: relative;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 50px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .category-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover::before {
+        left: 100%;
+      }
+
+      .category-btn.active {
+        background-color: #1e40af;
+        color: white;
+        border-color: #2563eb;
+        box-shadow: 0 10px 15px rgba(30, 64, 175, 0.3);
+      }
+
+      .category-btn:not(.active) {
+        background-color: #e6f2ff;
+        color: #1e40af;
+        border-color: #93c5fd;
+      }
+
+      /* Gallery Container */
+      .gallery-container {
+        background: linear-gradient(to right, #f0f9ff, #cbebff);
+        padding: 40px 0;
+        border-radius: 20px;
+      }
+
+      /* Hover effect for gallery items */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent 60%,
+          rgba(0, 0, 0, 0.7)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-item:hover::after {
+        opacity: 1;
+      }
+
+      .gallery-item .overlay-text {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        color: white;
+        text-align: center;
+        transition: bottom 0.3s ease;
+        z-index: 10;
+      }
+
+      .gallery-item:hover .overlay-text {
+        bottom: 0;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0066cc;
+        border-radius: 4px;
+      }
+
+      /* Dropdown Desktop */
+      .desktop-menu-item {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .desktop-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Desktop Submenu */
+      .desktop-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 50;
+      }
+
+      .desktop-menu-group:hover .desktop-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .desktop-dropdown-item {
+        position: relative;
+        padding: 10px 15px;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover {
+        background-color: #f0f0f0;
+        color: #0066cc;
+      }
+
+      .desktop-dropdown-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 15px;
+        background-color: #0066cc;
+        transition: width 0.3s ease;
+      }
+
+      .desktop-dropdown-item:hover::after {
+        width: calc(100% - 30px);
+      }
+
+      /* Dropdown untuk mobile menu */
+      .group:hover .group-hover:block {
+        display: block;
+      }
+
+      /* Animasi hover */
+      .hover-lift {
+        transition: transform 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Background gradient */
+      .header-gradient {
+        background: linear-gradient(135deg, #0066cc, #00348c);
+      }
+
+      /* Responsivitas Mobile */
+      @media (max-width: 768px) {
+        header {
+          padding: 10px 0;
+        }
+
+        .grid-cols-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animasi underline untuk menu mobile */
+      .mobile-menu-item {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .mobile-menu-item:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown animasi */
+      .dropdown-submenu {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .group:hover .dropdown-submenu {
+        max-height: 300px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-blue-100 font-sans">
+    <!-- Top Bar -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="container mx-auto flex justify-between px-4">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-phone"></i>
+          <span>(0721) 5610100</span>
+          <i class="fas fa-envelope"></i>
+          <span>smkalhudajatiagung@gmail.com</span>
+        </div>
+        <div class="hidden md:flex space-x-3">
+          <a
+            href="https://www.youtube.com/@smkal-hudajatiagung2925"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-youtube text-lg"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@smkalhudajatiagung"
+            class="hover:text-blue-500"
+          >
+            <i class="fab fa-tiktok text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-gradient text-white py-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center space-x-4">
+          <img
+            src="/img/logo-alhuda.png"
+            alt="Logo Sekolah"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold">
+              SMK AL-HUDA Jati Agung
+            </h1>
+            <p class="text-xs md:text-sm mt-3">
+              Membangun Generasi Unggul dan Berkarakter
+            </p>
+          </div>
+        </div>
+        <nav class="hidden lg:flex space-x-6">
+          <a
+            href="/index.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Beranda</a
+          >
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Profil</a
+            >
+            <div class="desktop-dropdown">
+              <a
+                href="/src/profile_sekolah/profile.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Sejarah</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/visi_misi.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Visi & Misi</span>
+              </a>
+              <a
+                href="/src/profile_sekolah/struktur.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Struktur Organisasi</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative desktop-menu-group">
+            <a href="#" class="desktop-menu-item hover:text-blue-200 transition"
+              >Akademik</a
+            >
+            <div class="desktop-dropdown">
+              <a
+                href="/src/akademik/kurikulum.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Kurikulum</span>
+              </a>
+              <a
+                href="/src/akademik/ekstrakurikuler.html"
+                class="desktop-dropdown-item block"
+              >
+                <span>Ekstrakurikuler</span>
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="/src/kontak/kontak.html"
+            class="desktop-menu-item hover:text-blue-200 transition"
+            >Kontak</a
+          >
+        </nav>
+        <button class="lg:hidden" id="mobile-menu-toggle">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-blue-700 text-white">
+      <nav class="container mx-auto py-4 space-y-3 pl-4">
+        <a href="#" class="block mobile-menu-item">Beranda</a>
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Profil</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a
+              href="/src/profile_sekolah/profile.html"
+              class="block mobile-menu-item"
+              >Sejarah</a
+            >
+            <a
+              href="/src/profile_sekolah/visi_misi.html"
+              class="block mobile-menu-item"
+              >Visi & Misi</a
+            >
+            <a
+              href="/src/profile_sekolah/struktur.html"
+              class="block mobile-menu-item"
+              >Struktur Organisasi</a
+            >
+          </div>
+        </div>
+
+        <div class="group">
+          <a href="#" class="block mobile-menu-item">Akademik</a>
+          <div class="pl-4 mt-2 space-y-2 dropdown-submenu">
+            <a
+              href="/src/akademik/kurikulum.html"
+              class="block mobile-menu-item"
+              >Kurikulum</a
+            >
+            <a
+              href="/src/akademik/ekstrakurikuler.html"
+              class="block mobile-menu-item"
+              >Ekstrakurikuler</a
+            >
+          </div>
+        </div>
+
+        <a href="/src/kontak/kontak.html" class="block mobile-menu-item"
+          >Kontak</a
+        >
+      </nav>
+    </div>
+
+    <!-- Konten Galeri -->
+    <div class="container mx-auto px-4 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">
+          Galeri SMK AL-HUDA
+        </h1>
+        <p class="text-blue-700 max-w-2xl mx-auto">
+          Dokumentasi momen-momen istimewa dan pencapaian luar biasa dari
+          keluarga besar SMK AL-HUDA Jati Agung
+        </p>
+      </div>
+
+      <!-- Kategori Button -->
+      <div class="flex justify-center mb-12 flex-wrap">
+        <button class="category-btn active" data-category="all">
+          <i class="fas fa-th-large mr-2"></i>Semua
+        </button>
+        <button class="category-btn" data-category="kegiatan">
+          <i class="fas fa-users mr-2"></i>Kegiatan
+        </button>
+        <button class="category-btn" data-category="prestasi">
+          <i class="fas fa-trophy mr-2"></i>Prestasi
+        </button>
+        <button class="category-btn" data-category="acara">
+          <i class="fas fa-calendar-alt mr-2"></i>Acara
+        </button>
+      </div>
+
+      <!-- Galeri Container -->
+      <div class="gallery-container">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6"
+        >
+          <div class="gallery-item" data-category="kegiatan">
+            <img
+              src="/img/mentri1.jpg"
+              alt="Kegiatan 1"
+              class="gallery-image w-full h-64 object-cover"
+            />
+            <div class="overlay-text bg-blue-900 bg-opacity-70">
+              <h3 class="text-white font-semibold">Kegiatan Kelas</h3>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="prestasi">
+            <img
+              src="/img/logo-alhuda.png"
+              alt="Prestasi 1"
+              class="gallery-image w-full h-64 object-cover"
+            />
+            <div class="overlay-text bg-blue-900 bg-opacity-70">
+              <h3 class="text-white font-semibold">Juara Lomba</h3>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="acara">
+            <img
+              src="/img/logo-alhuda.png"
+              alt="Acara 1"
+              class="gallery-image w-full h-64 object-cover"
+            />
+            <div class="overlay-text bg-blue-900 bg-opacity-70">
+              <h3 class="text-white font-semibold">Acara Tahunan</h3>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="kegiatan">
+            <img
+              src="/img/logo-alhuda.png"
+              alt="Kegiatan 2"
+              class="gallery-image w-full h-64 object-cover"
+            />
+            <div class="overlay-text bg-blue-900 bg-opacity-70">
+              <h3 class="text-white font-semibold">Kegiatan Ekstrakurikuler</h3>
+            </div>
+          </div>
+          <!-- Tambahkan lebih banyak item galeri sesuai kebutuhan -->
+        </div>
+      </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+      <div class="relative">
+        <div class="lightbox-controls flex items-center">
+          <span class="lightbox-info" id="lightbox-description"></span>
+          <a
+            href="#"
+            id="lightbox-download"
+            class="lightbox-download mr-4"
+            download
+          >
+            <i class="fas fa-download"></i>
+          </a>
+          <span class="lightbox-close" id="lightbox-close">&times;</span>
+        </div>
+        <img
+          id="lightbox-img"
+          class="lightbox-content"
+          src=""
+          alt="Lightbox Image"
+        />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-8 mt-8">
+      <div class="container mx-auto grid md:grid-cols-3 gap-6 px-4">
+        <div>
+          <h3 class="font-bold mb-4">Kontak Kami</h3>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-map-marker-alt mr-3 text-white-500"></i>
+            Jl. Pesantren Al huda Desa Jatimulyo, Kec. Jati Agung
+          </p>
+          <p class="flex items-center mb-2">
+            <i class="fas fa-phone mr-3 text-white-500"></i>
+            (0721) 5610100
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-envelope mr-3 text-white-500"></i>
+            smkalhudajatiagung@gmail.com
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Tautan Cepat</h3>
+          <ul>
+            <li>
+              <a
+                href="/src/profile_sekolah/profile.html"
+                class="hover:text-blue-200"
+                >Profil Sekolah</a
+              >
+            </li>
+            <li>
+              <a
+                href="/src/profile_sekolah/struktur.html"
+                class="hover:text-blue-200"
+                >Struktur Organisasi</a
+              >
+            </li>
+            <li>
+              <a
+                href="/src/profile_sekolah/galeri.html"
+                class="hover:text-blue-200"
+                >Galeri</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Media Sosial</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-blue-200"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Dropdown toggle untuk mobile
+      const dropdownGroups = document.querySelectorAll(".group");
+
+      dropdownGroups.forEach((group) => {
+        const mainLink = group.querySelector("a:first-child");
+        const submenu = group.querySelector(".dropdown-submenu");
+
+        mainLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          submenu.classList.toggle("max-h-0");
+          submenu.classList.toggle("opacity-0");
+          submenu.classList.toggle("max-h-screen");
+          submenu.classList.toggle("opacity-100");
+        });
+      });
+
+      // Kategori Galeri
+      const categoryButtons = document.querySelectorAll(".category-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      categoryButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Hapus kelas active dari semua tombol
+          categoryButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          // Filter galeri
+          const category = button.dataset.category;
+          galleryItems.forEach((item) => {
+            if (category === "all" || item.dataset.category === category) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Lightbox Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxClose = document.getElementById("lightbox-close");
+        const galleryImages = document.querySelectorAll(".gallery-image");
+
+        // Add click event to each gallery image
+        galleryImages.forEach((img) => {
+          img.addEventListener("click", function () {
+            // Ambil deskripsi dari overlay text
+            const description = img
+              .closest(".gallery-item")
+              .querySelector(".overlay-text h3").textContent;
+
+            lightboxImg.src = this.src;
+            document.getElementById("lightbox-description").textContent =
+              description;
+            document.getElementById("lightbox-download").href = this.src;
+
+            lightbox.style.display = "flex";
+
+            // Tambahkan sedikit animasi
+            setTimeout(() => {
+              lightbox.style.opacity = "1";
+            }, 10);
+          });
+        });
+
+        // Close lightbox when close button is clicked
+        lightboxClose.addEventListener("click", function () {
+          closeLightbox();
+        });
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        // Prevent closing lightbox when clicking on image or controls
+        document
+          .getElementById("lightbox-img")
+          .addEventListener("click", function (e) {
+            e.stopPropagation();
+          });
+
+        document
+          .getElementById("lightbox-download")
+          .addEventListener("click", function (e) {
+            e.stopPropagation();
+          });
+
+        // Fungsi untuk menutup lightbox dengan animasi
+        function closeLightbox() {
+          lightbox.style.opacity = "0";
+          setTimeout(() => {
+            lightbox.style.display = "none";
+          }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>
